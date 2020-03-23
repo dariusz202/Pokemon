@@ -6,6 +6,7 @@ public class Trainer {
     public int numberofpotion;
     public Pokemon[] pokemons;
     public int currentlypokemon;
+    public int changepokemon;
 
     public Trainer(String trainername,Pokemon[] pokemons){
         this.trainername = trainername;
@@ -21,6 +22,10 @@ public class Trainer {
         }
         else
             System.out.println("You don't have more potion");
+    }
+    public void changepokemon(int changepokemon){
+        this.currentlypokemon = changepokemon;
+        System.out.println("You change Pokemon to "+pokemons[currentlypokemon].name);
     }
 
     public void attack_other_trainer(Trainer other_trainer) {
