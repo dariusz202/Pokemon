@@ -40,7 +40,7 @@ public class Pokemon{
         if(this.current_health <=0)
             System.out.println("Your Pokemon is knocked out");
         else {
-            heal = ThreadLocalRandom.current().nextInt(5, 16);
+            heal = ThreadLocalRandom.current().nextInt(5, 11);
             this.current_health += heal;
             if(this.current_health > 100)
                 this.current_health = 100;
@@ -49,19 +49,46 @@ public class Pokemon{
 
     }
 
-
-
-
-
-    public void attack(Pokemon pokemon){
-        if(this.type == "Fire" && pokemon.type == "Water") {
+    public void attack(Pokemon other_pokemon){
+        if(this.type == other_pokemon.type ) {
+            damage = 2 * this.level;
+            other_pokemon.lose_health(damage);
+        }
+        if(this.type == "Fire" && other_pokemon.type == "Grass") {
+            damage = 4 * this.level;
+            other_pokemon.lose_health(damage);
+        }
+        if(this.type == "Grass" && other_pokemon.type == "Fire"){
+            damage = 1 * this.level;
+            other_pokemon.lose_health(damage);
+        }
+        if(this.type == "Fire" && other_pokemon.type == "Water"){
+            damage = 1 * this.level;
+            other_pokemon.lose_health(damage);
+        }
+        if(this.type == "Water" && other_pokemon.type == "Fire"){
+            damage = 4 * this.level;
+            other_pokemon.lose_health(damage);
+        }
+        if(this.type == "Water" && other_pokemon.type == "Grass"){
+            damage = 1 * this.level;
+            other_pokemon.lose_health(damage);
+        }
+        if(this.type == "Grass" && other_pokemon.type == "Water"){
+            damage = 4 * this.level;
+            other_pokemon.lose_health(damage);
         }
     }
     public static void main(String[] args)
     {
         Pokemon a = new Pokemon("baybe",3,"Fire");
+        Pokemon b = new Pokemon("baybev2",3,"Grass");
         a.lose_health(20);
         a.gain_health();
+        a.attack(b);
+        Trainer first = new Trainer("dupav1",[a]);
+        Trainer secound = new Trainer("dupav2", [a] ) ;
+
 
     }
 
