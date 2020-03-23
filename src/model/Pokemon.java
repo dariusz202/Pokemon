@@ -10,6 +10,7 @@ public class Pokemon{
     public boolean knocked_out;
     public int damage;
     public int heal;
+    public Pokemon[] array;
 
     public Pokemon(String name,int level, String type){
         this.name = name;
@@ -83,12 +84,12 @@ public class Pokemon{
     {
         Pokemon a = new Pokemon("baybe",3,"Fire");
         Pokemon b = new Pokemon("baybev2",3,"Grass");
-        a.lose_health(20);
-        a.gain_health();
-        a.attack(b);
-        Trainer first = new Trainer("dupav1",[a]);
-        Trainer secound = new Trainer("dupav2", [a] ) ;
-
+        //a.lose_health(20);
+        //a.gain_health();
+        //a.attack(b);
+        Trainer first = new Trainer("dupav1", new Pokemon[] {a});
+        Trainer secound = new Trainer("dupav2",new Pokemon[] {b}) ;
+        first.attack_other_trainer(secound);
 
     }
 

@@ -23,9 +23,10 @@ public class Trainer {
             System.out.println("You don't have more potion");
     }
 
-    public void atack_other_trainer(Trainer other_trainer) {
+    public void attack_other_trainer(Trainer other_trainer) {
         Pokemon my_pokemon = this.pokemons[currentlypokemon];
         Pokemon their_pokemon = other_trainer.pokemons[other_trainer.currentlypokemon];
-        System.out.println("You attack " + other_trainer.currentlypokemon);
+        System.out.println("You attack " + their_pokemon.name);
+        my_pokemon.attack(their_pokemon);
     }
 }
