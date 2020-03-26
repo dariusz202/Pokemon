@@ -1,7 +1,7 @@
 package controller;
 
 import view.StartWindow;
-import view.PlayWindow;
+import view.CreateWindow;
 import view.GameWindow;
 
 import javax.swing.*;
@@ -13,7 +13,7 @@ import java.awt.event.*;
 public class Controller implements ActionListener{
 
     private StartWindow GUI;
-    private PlayWindow GUI2;
+    private CreateWindow GUI2;
     private GameWindow GUI3;
 
     public Controller() throws Exception{
@@ -27,12 +27,13 @@ public class Controller implements ActionListener{
         GUI.getAboutButton().addActionListener(this);
 
     }
-    private void addActionListenerPlayWindow(){
+    private void addActionListenerCreateWindow(){
         GUI2.getReadyButton().addActionListener(this);
     }
     private void addActionListenerGameWindow(){
-        GUI2.getReadyButton().addActionListener(this);
+        //GUI3.getReadyButton().addActionListener(this);
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -72,8 +73,8 @@ public class Controller implements ActionListener{
         switch(view) {
             case "PlayView":
                 this.GUI.frame.setVisible(false);
-                this.GUI2 = new PlayWindow();
-                this.addActionListenerPlayWindow();
+                this.GUI2 = new CreateWindow();
+                this.addActionListenerCreateWindow();
                 this.GUI2.frame.setVisible(true);
                 break;
             case "AboutView":

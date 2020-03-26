@@ -9,6 +9,7 @@ public class GameWindow {
     ImageIcon img = new ImageIcon("StartWindow.jpg");
     private JButton ReadyButton;
 
+
     public GameWindow() {
         initializeView();
     }
@@ -22,13 +23,9 @@ public class GameWindow {
         this.frame.setIconImage(icon);
         this.frame.setTitle("Pokemon");
 
-        ReadyButton = new JButton("About");
-        {
-            ReadyButton.setBounds(300,250,100,32);
-            frame.getContentPane().add(ReadyButton);
-        }
+
     }
 
-    public JButton getReadyButton(){return ReadyButton;}
+
 }
 
