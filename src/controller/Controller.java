@@ -39,6 +39,12 @@ public class Controller implements ActionListener{
         GUI.getReviveButton2().addActionListener(this);
         GUI.getPotionButton2().addActionListener(this);
         GUI.getAttackButton2().addActionListener(this);
+        GUI.getSelectlvl1Button1().addActionListener(this);
+        GUI.getSelectlvl2Button1().addActionListener(this);
+        GUI.getSelectlvl3Button1().addActionListener(this);
+        GUI.getSelectlvl1Button2().addActionListener(this);
+        GUI.getSelectlvl2Button2().addActionListener(this);
+        GUI.getSelectlvl3Button2().addActionListener(this);
     }
 
 
@@ -109,6 +115,48 @@ public class Controller implements ActionListener{
                 System.out.println(ex);
             }
         }
+        if((((JButton) e.getSource() == GUI.getSelectlvl1Button1()))){
+            try{
+                Selectlvl1Button1();
+            } catch (Exception ex){
+                System.out.println(ex);
+            }
+        }
+        if((((JButton) e.getSource() == GUI.getSelectlvl2Button1()))){
+            try{
+                Selectlvl2Button1();
+            } catch (Exception ex){
+                System.out.println(ex);
+            }
+        }
+        if((((JButton) e.getSource() == GUI.getSelectlvl3Button1()))){
+            try{
+                Selectlvl3Button1();
+            } catch (Exception ex){
+                System.out.println(ex);
+            }
+        }
+        if((((JButton) e.getSource() == GUI.getSelectlvl1Button2()))){
+            try{
+                Selectlvl1Button2();
+            } catch (Exception ex){
+                System.out.println(ex);
+            }
+        }
+        if((((JButton) e.getSource() == GUI.getSelectlvl2Button2()))){
+            try{
+                Selectlvl2Button2();
+            } catch (Exception ex){
+                System.out.println(ex);
+            }
+        }
+        if((((JButton) e.getSource() == GUI.getSelectlvl3Button2()))){
+            try{
+                Selectlvl3Button2();
+            } catch (Exception ex){
+                System.out.println(ex);
+            }
+        }
     }
 
     private void PlayButton() throws Exception{
@@ -136,6 +184,40 @@ public class Controller implements ActionListener{
         return player2;
     }
 
+    private Trainer Selectlvl1Button1(){
+        if(player1.currentlypokemon == 0) {
+            System.out.println(player1.trainername + " you already have chosen this pokemon !");
+            return player1;
+        }
+        else{
+            player1.changepokemon(0);
+            GUI.currentpokemonname1.setText("Currently pokemon :" + (player1.pokemons[player1.currentlypokemon].name ));
+            return player1;
+        }
+    }
+    private Trainer Selectlvl2Button1(){
+        if(player1.currentlypokemon == 1) {
+            System.out.println(player1.trainername + " you already have chosen this pokemon !");
+            return player1;
+        }
+        else{
+            player1.changepokemon(1);
+            GUI.currentpokemonname1.setText("Currently pokemon :" + (player1.pokemons[player1.currentlypokemon].name ));
+            return player1;
+        }
+    }
+    private Trainer Selectlvl3Button1(){
+        if(player1.currentlypokemon == 2) {
+            System.out.println(player1.trainername + " you already have chosen this pokemon !");
+            return player1;
+        }
+        else{
+            player1.changepokemon(2);
+            GUI.currentpokemonname1.setText("Currently pokemon :" + (player1.pokemons[player1.currentlypokemon].name ));
+            return player1;
+        }
+    }
+
     private Trainer ReviveButton1() throws Exception{
         player1.revive();
         GUI.possiblerevive1.setText("Possible revive :"+ player1.possiblerevive);
@@ -147,12 +229,58 @@ public class Controller implements ActionListener{
         return player1;
     }
     public Trainer AttackButton1() throws Exception{
-        if(player1.pokemons[player1.currentlypokemon].current_health != 0){
-            player1.attack_other_trainer(player2);
+        if(player1.pokemons[player1.currentlypokemon].current_health != 0) {
+            if(player1.pokemons[player1.currentlypokemon] == player1.pokemons[0]) {
+                player1.attack_other_trainer(player2);
+                GUI.pokemonlvl1currenthealthv2.setText("Current health : " + player2.pokemons[0].current_health);
+                return player2;
+            }
+            else if(player1.pokemons[player1.currentlypokemon] == player1.pokemons[1]) {
+                player1.attack_other_trainer(player2);
+                GUI.pokemonlvl2currenthealthv2.setText("Current health : " + player2.pokemons[1].current_health);
+                return player2;
+            }
+            else {
+                player1.attack_other_trainer(player2);
+                GUI.pokemonlvl3currenthealthv2.setText("Current health : " + player2.pokemons[2].current_health);
+                return player2;
+            }
+        }
+        else{
+            System.out.println(player2.trainername +" need to change his current pokemon");
+            return player1;
+        }
+    }
+    private Trainer Selectlvl1Button2(){
+        if(player2.currentlypokemon == 0) {
+            System.out.println(player2.trainername + " you already have chosen this pokemon !");
             return player2;
         }
         else{
-            System.out.println(player1.trainername +" need to change his current pokemon");
+            player2.changepokemon(0);
+            GUI.currentpokemonname2.setText("Currently pokemon :" + (player2.pokemons[player2.currentlypokemon].name ));
+            return player2;
+        }
+    }
+    private Trainer Selectlvl2Button2(){
+        if(player2.currentlypokemon == 1) {
+            System.out.println(player2.trainername + " you already have chosen this pokemon !");
+            return player2;
+        }
+        else{
+            player2.changepokemon(1);
+            GUI.currentpokemonname2.setText("Currently pokemon :" + (player2.pokemons[player2.currentlypokemon].name ));
+            return player2;
+        }
+    }
+    private Trainer Selectlvl3Button2(){
+        if(player2.currentlypokemon == 2) {
+            System.out.println(player2.trainername + " you already have chosen this pokemon !");
+            return player2;
+        }
+        else{
+            player2.changepokemon(2);
+            GUI.currentpokemonname2.setText("Currently pokemon :" + (player2.pokemons[player2.currentlypokemon].name ));
             return player2;
         }
     }
@@ -168,8 +296,21 @@ public class Controller implements ActionListener{
     }
     private Trainer AttackButton2() throws Exception{
         if(player2.pokemons[player2.currentlypokemon].current_health != 0) {
-            player2.attack_other_trainer(player1);
-            return player1;
+            if(player2.pokemons[player2.currentlypokemon] == player2.pokemons[0]) {
+                player2.attack_other_trainer(player1);
+                GUI.pokemonlvl1currenthealth.setText("Current health : " + player1.pokemons[0].current_health);
+                return player1;
+            }
+            else if(player2.pokemons[player2.currentlypokemon] == player2.pokemons[1]) {
+                player2.attack_other_trainer(player1);
+                GUI.pokemonlvl2currenthealth.setText("Current health : " + player1.pokemons[1].current_health);
+                return player1;
+            }
+            else {
+                player2.attack_other_trainer(player1);
+                GUI.pokemonlvl3currenthealth.setText("Current health : " + player1.pokemons[2].current_health);
+                return player1;
+            }
         }
         else{
             System.out.println(player2.trainername +" need to change his current pokemon");
@@ -202,6 +343,35 @@ public class Controller implements ActionListener{
                 GUI.trainerlabel1.setText("Name :" + player1.trainername);
                 GUI.currentpokemonname1.setText("Currently pokemon :" + (player1.pokemons[player1.currentlypokemon].name ));
                 GUI.possiblerevive1.setText("Possible revive :"+ (player1.possiblerevive));
+
+                GUI.Selectlvl1Button1.setText(" Select "+ player1.pokemons[0].name);
+                GUI.pokemontypelabellvl1.setText("Type : " + player1.pokemons[0].type);
+                GUI.pokemonlvl1currenthealth.setText("Current health : " + player1.pokemons[0].current_health);
+
+                GUI.Selectlvl2Button1.setText(" Select "+ player1.pokemons[1].name);
+                GUI.pokemontypelabellvl2.setText("Type :" + player1.pokemons[1].type);
+                GUI.pokemonlvl2currenthealth.setText("Current health : " + player1.pokemons[1].current_health);
+
+                GUI.Selectlvl3Button1.setText(" Select "+ player1.pokemons[2].name);
+                GUI.pokemontypelabellvl3.setText("Type : " + player1.pokemons[2].type);
+                GUI.pokemonlvl3currenthealth.setText("Current health : " + player1.pokemons[2].current_health);
+
+                GUI.numberofpotion2.setText("Number of potion :" + player2.numberofpotion );
+                GUI.trainerlabel2.setText("Name :" + player2.trainername);
+                GUI.currentpokemonname2.setText("Currently pokemon :" + (player2.pokemons[player2.currentlypokemon].name ));
+                GUI.possiblerevive2.setText("Possible revive :"+ (player2.possiblerevive));
+
+                GUI.Selectlvl1Button2.setText(" Select "+ player2.pokemons[0].name);
+                GUI.pokemontypelabellvl1v2.setText("Type : " + player2.pokemons[0].type);
+                GUI.pokemonlvl1currenthealthv2.setText("Current health : " + player2.pokemons[0].current_health);
+
+                GUI.Selectlvl2Button2.setText(" Select "+ player2.pokemons[1].name);
+                GUI.pokemontypelabellvl2v2.setText("Type :" + player2.pokemons[1].type);
+                GUI.pokemonlvl2currenthealthv2.setText("Current health : " + player1.pokemons[1].current_health);
+
+                GUI.Selectlvl3Button2.setText(" Select "+ player2.pokemons[2].name);
+                GUI.pokemontypelabellvl3v2.setText("Type : " + player2.pokemons[2].type);
+                GUI.pokemonlvl3currenthealthv2.setText("Current health : " + player2.pokemons[2].current_health);
                 break;
 
         }
