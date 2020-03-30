@@ -14,6 +14,10 @@ public class Application {
     public JLabel background;
     public JLabel pokemons;
     public JFrame frame;
+
+    public JButton ReviveButton1;
+    public JButton PotionButton1;
+    public JButton AttackButton1;
     public JLabel player1;
     public JLabel numberofpotion1;
     public JLabel possiblerevive1;
@@ -36,7 +40,9 @@ public class Application {
     public JComboBox pokemontypelvl3;
     public JLabel currentpokemonname1;
 
-
+    public JButton ReviveButton2;
+    public JButton PotionButton2;
+    public JButton AttackButton2;
     public JLabel player2;
     public JLabel numberofpotion2;
     public JLabel possiblerevive2;
@@ -95,10 +101,36 @@ public class Application {
         }
     }
     public void gamewindowbuttons(){
-        ReadyButton = new JButton("Ready");
+        ReviveButton1 = new JButton("Revive");
         {
-            ReadyButton.setBounds(330,430,100,32);
-            frame.getContentPane().add(ReadyButton);
+            ReviveButton1.setBounds(10,430,80,32);
+            frame.getContentPane().add(ReviveButton1);
+        }
+        PotionButton1 = new JButton("Potion");
+        {
+            PotionButton1.setBounds(100,430,80,32);
+            frame.getContentPane().add(PotionButton1);
+        }
+        AttackButton1 = new JButton("Attack");
+        {
+            AttackButton1.setBounds(190,430,80,32);
+            frame.getContentPane().add(AttackButton1);
+        }
+
+        ReviveButton2 = new JButton("Revive");
+        {
+            ReviveButton2.setBounds(420,430,80,32);
+            frame.getContentPane().add(ReviveButton2);
+        }
+        PotionButton2 = new JButton("Potion");
+        {
+            PotionButton2.setBounds(510,430,80,32);
+            frame.getContentPane().add(PotionButton2);
+        }
+        AttackButton2 = new JButton("Attack");
+        {
+            AttackButton2.setBounds(600,430,80,32);
+            frame.getContentPane().add(AttackButton2);
         }
     }
     public void startwindow(){
@@ -364,28 +396,28 @@ public class Application {
 
         player1 = new JLabel("Player 1");
         {
-            player1.setBounds(80,100,100,20);
+            player1.setBounds(60,10,100,20);
             frame.getContentPane().add(player1);
         }
 
         trainerlabel1 = new JLabel();
         {
-            trainerlabel1.setBounds(50,130,100,20);
+            trainerlabel1.setBounds(20,40,150,20);
             frame.getContentPane().add(trainerlabel1);
         }
-        numberofpotion1 = new JLabel("");
+        numberofpotion1 = new JLabel();
         {
-            numberofpotion1.setBounds(50,180,150,20);
+            numberofpotion1.setBounds(20,60,150,20);
             frame.getContentPane().add(numberofpotion1);
         }
-        possiblerevive1 = new JLabel("");
+        possiblerevive1 = new JLabel();
         {
-            possiblerevive1.setBounds(50,180,150,20);
+            possiblerevive1.setBounds(20,80,150,20);
             frame.getContentPane().add(possiblerevive1);
         }
-        currentpokemonname1 = new JLabel("");
+        currentpokemonname1 = new JLabel();
         {
-            currentpokemonname1.setBounds(60,100,100,20);
+            currentpokemonname1.setBounds(20,100,190,20);
             frame.getContentPane().add(currentpokemonname1);
         }
 
@@ -407,4 +439,16 @@ public class Application {
     public JButton getAboutButton(){ return AboutButton; }
 
     public JButton getReadyButton(){return ReadyButton;}
+
+    public JButton getReviveButton1(){ return ReviveButton1; }
+
+    public JButton getPotionButton1(){ return PotionButton1; }
+
+    public JButton getAttackButton1(){return AttackButton1;}
+
+    public JButton getReviveButton2(){ return ReviveButton2; }
+
+    public JButton getPotionButton2(){ return PotionButton2; }
+
+    public JButton getAttackButton2(){return AttackButton2;}
 }
