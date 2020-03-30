@@ -1,61 +1,69 @@
 package view;
 
+import model.Trainer;
+import controller.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class CreateWindow {
+public class Application {
 
+    public JButton AboutButton;
+    public JButton PlayButton;
+    public JButton ReadyButton;
+    public JLabel background;
+    public JLabel pokemons;
     public JFrame frame;
-    private JButton ReadyButton;
-    private JLabel background;
-    private JLabel player1;
-    private JLabel trainerlabel1;
+    public JLabel player1;
+    public JLabel numberofpotion1;
+    public JLabel possiblerevive1;
+    public JLabel trainerlabel1;
     public JTextField trainername1;
-    private JLabel pokemonlabellvl1;
-    private JLabel pokemonnamelabellvl1;
+    public JLabel pokemonlabellvl1;
+    public JLabel pokemonnamelabellvl1;
     public JTextField pokemonnamelvl1;
-    private JLabel pokemontypelabellvl1;
+    public JLabel pokemontypelabellvl1;
     public JComboBox pokemontypelvl1;
-    private JLabel pokemonlabellvl2;
-    private JLabel pokemonnamelabellvl2;
+    public JLabel pokemonlabellvl2;
+    public JLabel pokemonnamelabellvl2;
     public JTextField pokemonnamelvl2;
-    private JLabel pokemontypelabellvl2;
+    public JLabel pokemontypelabellvl2;
     public JComboBox pokemontypelvl2;
-    private JLabel pokemonlabellvl3;
-    private JLabel pokemonnamelabellvl3;
+    public JLabel pokemonlabellvl3;
+    public JLabel pokemonnamelabellvl3;
     public JTextField pokemonnamelvl3;
-    private JLabel pokemontypelabellvl3;
+    public JLabel pokemontypelabellvl3;
     public JComboBox pokemontypelvl3;
+    public JLabel currentpokemonname1;
 
 
-    private JLabel player2;
-    private JLabel trainerlabel1v2;
-    public JTextField trainername1v2;
-    private JLabel pokemonlabellvl1v2;
-    private JLabel pokemonnamelabellvl1v2;
+    public JLabel player2;
+    public JLabel numberofpotion2;
+    public JLabel possiblerevive2;
+    public JLabel trainerlabel2;
+    public JTextField trainername2;
+    public JLabel pokemonlabellvl1v2;
+    public JLabel pokemonnamelabellvl1v2;
     public JTextField pokemonnamelvl1v2;
-    private JLabel pokemontypelabellvl1v2;
+    public JLabel pokemontypelabellvl1v2;
     public JComboBox pokemontypelvl1v2;
-    private JLabel pokemonlabellvl2v2;
-    private JLabel pokemonnamelabellvl2v2;
+    public JLabel pokemonlabellvl2v2;
+    public JLabel pokemonnamelabellvl2v2;
     public JTextField pokemonnamelvl2v2;
-    private JLabel pokemontypelabellvl2v2;
+    public JLabel pokemontypelabellvl2v2;
     public JComboBox pokemontypelvl2v2;
-    private JLabel pokemonlabellvl3v2;
-    private JLabel pokemonnamelabellvl3v2;
+    public JLabel pokemonlabellvl3v2;
+    public JLabel pokemonnamelabellvl3v2;
     public JTextField pokemonnamelvl3v2;
-    private JLabel pokemontypelabellvl3v2;
+    public JLabel pokemontypelabellvl3v2;
     public JComboBox pokemontypelvl3v2;
+    public JLabel currentpokemonname2;
 
 
 
 
 
-    public CreateWindow() {
-        initializeView();
-    }
-
-    public void initializeView() {
+    public Application() {
         frame = new JFrame();
         frame.setBounds(100,100,710,530);
         frame.getContentPane().setLayout(null);
@@ -63,6 +71,48 @@ public class CreateWindow {
         this.frame.setResizable(false);
         this.frame.setIconImage(icon);
         this.frame.setTitle("Pokemon");
+        startwindowbuttons();
+        startwindow();
+    }
+
+    public void startwindowbuttons(){
+        PlayButton = new JButton("Play");
+        {
+            PlayButton.setBounds(300,200,100,32);
+            frame.getContentPane().add(PlayButton);
+        }
+        AboutButton = new JButton("About");
+        {
+            AboutButton.setBounds(300,250,100,32);
+            frame.getContentPane().add(AboutButton);
+        }
+    }
+    public void createwindowbuttons(){
+        ReadyButton = new JButton("Ready");
+        {
+            ReadyButton.setBounds(280,430,100,32);
+            frame.getContentPane().add(ReadyButton);
+        }
+    }
+    public void gamewindowbuttons(){
+        ReadyButton = new JButton("Ready");
+        {
+            ReadyButton.setBounds(330,430,100,32);
+            frame.getContentPane().add(ReadyButton);
+        }
+    }
+    public void startwindow(){
+
+        background = new JLabel();
+        {
+            background.setIcon(new ImageIcon("pictures\\StartWindow.jpg"));
+            background.setBounds(0,0,700,500);
+            frame.getContentPane().add(background);
+        }
+    }
+
+    public void createwindow() {
+
 
         player1 = new JLabel("Player 1");
         {
@@ -189,17 +239,17 @@ public class CreateWindow {
             player2.setBounds(540,100,100,20);
             frame.getContentPane().add(player2);
         }
-        trainerlabel1v2 = new JLabel(" name :");
+        trainerlabel2 = new JLabel(" name :");
         {
-            trainerlabel1v2.setForeground(Color.white);
-            trainerlabel1v2.setBounds(500,130,100,20);
-            frame.getContentPane().add(trainerlabel1v2);
+            trainerlabel2.setForeground(Color.white);
+            trainerlabel2.setBounds(500,130,100,20);
+            frame.getContentPane().add(trainerlabel2);
         }
-        trainername1v2 = new JTextField();
+        trainername2 = new JTextField();
         {
-            trainername1v2.setBounds(550,130,80,20);
-            trainername1v2.setDocument(new JTextFieldLimit(10));
-            frame.getContentPane().add(trainername1v2);
+            trainername2.setBounds(550,130,80,20);
+            trainername2.setDocument(new JTextFieldLimit(10));
+            frame.getContentPane().add(trainername2);
         }
         pokemonlabellvl1v2 = new JLabel("pokemon lvl 1");
         {
@@ -300,18 +350,61 @@ public class CreateWindow {
             frame.getContentPane().add(pokemontypelvl3v2);
         }
 
-        ReadyButton = new JButton("Ready");
-        {
-            ReadyButton.setBounds(280,430,100,32);
-            frame.getContentPane().add(ReadyButton);
-        }
+
         background = new JLabel();
         {
             background.setIcon(new ImageIcon("pictures\\PlayWindow.jpg"));
             background.setBounds(0,0,700,500);
             frame.getContentPane().add(background);
         }
+
     }
+
+    public void gamewindow(){
+
+        player1 = new JLabel("Player 1");
+        {
+            player1.setBounds(80,100,100,20);
+            frame.getContentPane().add(player1);
+        }
+
+        trainerlabel1 = new JLabel();
+        {
+            trainerlabel1.setBounds(50,130,100,20);
+            frame.getContentPane().add(trainerlabel1);
+        }
+        numberofpotion1 = new JLabel("");
+        {
+            numberofpotion1.setBounds(50,180,150,20);
+            frame.getContentPane().add(numberofpotion1);
+        }
+        possiblerevive1 = new JLabel("");
+        {
+            possiblerevive1.setBounds(50,180,150,20);
+            frame.getContentPane().add(possiblerevive1);
+        }
+        currentpokemonname1 = new JLabel("");
+        {
+            currentpokemonname1.setBounds(60,100,100,20);
+            frame.getContentPane().add(currentpokemonname1);
+        }
+
+        background = new JLabel();
+        {
+            background.setIcon(new ImageIcon("pictures\\GameWindow.jpg"));
+            background.setBounds(0,0,700,500);
+            frame.getContentPane().add(background);
+        }
+
+
+
+    }
+
+
+
+    public JButton getPlayButton(){ return PlayButton; }
+
+    public JButton getAboutButton(){ return AboutButton; }
 
     public JButton getReadyButton(){return ReadyButton;}
 }

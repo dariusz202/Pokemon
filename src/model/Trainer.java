@@ -7,18 +7,29 @@ public class Trainer {
     public Pokemon[] pokemons;
     public int currentlypokemon;
     public int changepokemon;
+    public int possiblerevive;
 
     public Trainer(String trainername,Pokemon[] pokemons){
         this.trainername = trainername;
         this.numberofpotion = 3;
         this.pokemons = pokemons;
         this.currentlypokemon = 0;
+        this.possiblerevive = 1;
     }
     public void potion(){
         if(this.numberofpotion > 0){
             pokemons[currentlypokemon].gain_health();
             this.numberofpotion -= 1;
-            System.out.println("You use potion on you current Pokemon "+pokemons[currentlypokemon].name);
+            System.out.println("You use potion on your current Pokemon "+pokemons[currentlypokemon].name);
+        }
+        else
+            System.out.println("You don't have more potion");
+    }
+    public void revive(){
+        if(this.possiblerevive > 0){
+            pokemons[currentlypokemon].revive();
+            this.possiblerevive -= 1;
+            System.out.println("You bring "+pokemons[currentlypokemon].name +" to life :");
         }
         else
             System.out.println("You don't have more potion");

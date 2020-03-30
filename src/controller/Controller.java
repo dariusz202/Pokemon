@@ -1,8 +1,8 @@
 package controller;
 
-import view.StartWindow;
-import view.CreateWindow;
-import view.GameWindow;
+import model.Pokemon;
+import model.Trainer;
+import view.Application;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -12,27 +12,27 @@ import java.awt.event.*;
 
 public class Controller implements ActionListener{
 
-    private StartWindow GUI;
-    private CreateWindow GUI2;
-    private GameWindow GUI3;
+    public Application GUI;
 
     public Controller() throws Exception{
 
-        this.GUI = new StartWindow();
+        this.GUI = new Application();
         this.GUI.frame.setVisible(true);
-        this.addActionListenerMainWindow();
+        addActionListenerstartwindow();
     }
-    private void addActionListenerMainWindow(){
+    private void addActionListenerstartwindow(){
+
         GUI.getPlayButton().addActionListener(this);
         GUI.getAboutButton().addActionListener(this);
+    }
+    private void addActionListenercreatewindow(){
+        GUI.getReadyButton().addActionListener(this);
+    }
+    private void addActionListenergamewindow(){
+        GUI.getReadyButton().addActionListener(this);
+    }
 
-    }
-    private void addActionListenerCreateWindow(){
-        GUI2.getReadyButton().addActionListener(this);
-    }
-    private void addActionListenerGameWindow(){
-        //GUI3.getReadyButton().addActionListener(this);
-    }
+
 
 
     @Override
@@ -51,7 +51,7 @@ public class Controller implements ActionListener{
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI2.getReadyButton()))){
+        if((((JButton) e.getSource() == GUI.getReadyButton()))){
             try{
                 ReadyButton();
             } catch (Exception ex){
@@ -68,35 +68,40 @@ public class Controller implements ActionListener{
     }
     private void ReadyButton() throws Exception{
         view("GameView");
+        Pokemon a = new Pokemon(GUI.pokemonnamelvl1.getText(),1,GUI.pokemontypelvl1.getSelectedItem().toString());
+        Pokemon b = new Pokemon(GUI.pokemonnamelvl2.getText(),2,GUI.pokemontypelvl2.getSelectedItem().toString());
+        Pokemon c = new Pokemon(GUI.pokemonnamelvl3.getText(),3,GUI.pokemontypelvl3.getSelectedItem().toString());
+        Trainer player1 = new Trainer(GUI.trainername1.getText(),new Pokemon[] {a,b,c});
+        Pokemon d = new Pokemon(GUI.pokemonnamelvl1v2.getText(),1,GUI.pokemontypelvl1v2.getSelectedItem().toString());
+        Pokemon e = new Pokemon(GUI.pokemonnamelvl2v2.getText(),2,GUI.pokemontypelvl2v2.getSelectedItem().toString());
+        Pokemon f = new Pokemon(GUI.pokemonnamelvl3v2.getText(),3,GUI.pokemontypelvl3v2.getSelectedItem().toString());
+        Trainer player2 = new Trainer(GUI.trainername2.getText(),new Pokemon[] {d,e,f});
+        GUI.trainerlabel1.setText(" name :" + player1.trainername);
+        GUI.numberofpotion1.setText(" Number of potion :" + player1.numberofpotion );
+        GUI.numberofpotion1.setText(" Currently pokemon :" + (player1.pokemons[player1.currentlypokemon].name ));
+        System.out.println(a.type);
     }
+
+
     private void view(String view){
         switch(view) {
             case "PlayView":
-                this.GUI.frame.setVisible(false);
-                this.GUI2 = new CreateWindow();
-                this.addActionListenerCreateWindow();
-                this.GUI2.frame.setVisible(true);
+                GUI.frame.getContentPane().removeAll();
+                GUI.frame.repaint();
+                GUI.createwindowbuttons();
+                addActionListenercreatewindow();
+                GUI.createwindow();
                 break;
             case "AboutView":
                 break;
             case "GameView":
-                this.GUI2.frame.setVisible(false);
-                this.GUI3 = new GameWindow();
-                this.addActionListenerGameWindow();
-                this.GUI3.frame.setVisible(true);
-
-
-
-
-
-
-
-
+                GUI.frame.getContentPane().removeAll();
+                GUI.frame.repaint();
+                GUI.gamewindowbuttons();
+                addActionListenergamewindow();
+                GUI.gamewindow();
+                break;
 
         }
-
-
-
-
     }
 }
