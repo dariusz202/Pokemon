@@ -1,14 +1,9 @@
 package view;
 
-import model.Trainer;
-import controller.Controller;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.PrintStream;
+
 
 public class Application {
 
@@ -668,7 +663,6 @@ public class Application {
         scrollPane = new JScrollPane (textArea);
         {
             scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-            //scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
             frame.getContentPane().add(scrollPane);
         }
         background = new JLabel();

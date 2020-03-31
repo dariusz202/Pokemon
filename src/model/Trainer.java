@@ -18,34 +18,19 @@ public class Trainer {
     }
 
     public void potion() {
-        if(pokemons[currentlypokemon].current_health == 100)
-            System.out.println(this.trainername + " wanted to use the potion on the current pokemon which is in full health");
-        else {
-            if(pokemons[currentlypokemon].current_health == 0)
-                System.out.println(this.trainername + " wanted to use the potion on the current pokemon which is knocked down");
-            else{
-                if(this.numberofpotion > 0) {
-                    pokemons[currentlypokemon].gain_health();
-                    this.numberofpotion -= 1;
-                    System.out.println(this.trainername +" used the potion on the current pokemon(" + pokemons[currentlypokemon].name+")");
-                }
-            }
-        }
+        pokemons[currentlypokemon].gain_health();
+        this.numberofpotion -= 1;
+        System.out.println(this.trainername +" used the potion on the current pokemon(" + pokemons[currentlypokemon].name+")");
+
     }
 
 
     public void revive(){
 
-        if(pokemons[currentlypokemon].current_health == 0) {
-            if (this.possiblerevive > 0) {
-                pokemons[currentlypokemon].current_health = 100;
-                this.possiblerevive -= 1;
-                System.out.println(this.trainername + " bring " + pokemons[currentlypokemon].name + " to life :");
-            } else
-                System.out.println(this.trainername + " can't revive any more pokemons");
-        }
-        else
-            System.out.println(this.trainername + "wanted to revive his current pokemon ("+pokemons[currentlypokemon].name+ ") who is still alive !");
+        pokemons[currentlypokemon].current_health = 100;
+        this.possiblerevive -= 1;
+        System.out.println(this.trainername + " bring " + pokemons[currentlypokemon].name + " to life :");
+
     }
     public void changepokemon(int changepokemon){
         this.currentlypokemon = changepokemon;
