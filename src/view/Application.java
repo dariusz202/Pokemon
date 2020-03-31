@@ -4,10 +4,18 @@ import model.Trainer;
 import controller.Controller;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.PrintStream;
 
 public class Application {
 
+    public JTextArea textArea;
+    public JScrollPane scrollPane;
+    public JPanel textpanel;
+    public Border border;
     public JButton AboutButton;
     public JButton PlayButton;
     public JButton ReadyButton;
@@ -562,6 +570,7 @@ public class Application {
             frame.getContentPane().add(player2);
         }
 
+
         trainerlabel2 = new JLabel();
         {
             trainerlabel2.setForeground(Color.black);
@@ -642,8 +651,26 @@ public class Application {
             pokemonlvl3currenthealthv2.setBounds(520,380,150,20);
             frame.getContentPane().add(pokemonlvl3currenthealthv2);
         }
+        textpanel = new JPanel();
+        {
+            textpanel.setBounds(175, 20, 320, 200);
+            frame.getContentPane().add(textpanel);
+        }
 
-
+        textArea = new JTextArea(11,30);
+        {
+            textArea.setBounds(175,20,320,200);
+            textArea.setEditable(false);
+            textArea.setBackground(Color.LIGHT_GRAY);
+            textArea.setForeground(Color.BLACK);
+            frame.getContentPane().add(textArea);
+        }
+        scrollPane = new JScrollPane (textArea);
+        {
+            scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            //scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+            frame.getContentPane().add(scrollPane);
+        }
         background = new JLabel();
         {
             background.setIcon(new ImageIcon("pictures\\GameWindow.jpg"));

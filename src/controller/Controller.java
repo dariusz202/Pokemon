@@ -3,11 +3,17 @@ package controller;
 import model.Pokemon;
 import model.Trainer;
 import view.Application;
+import view.TextAreaOutputStream;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.PrintStream;
+import javax.swing.*;
+import javax.swing.border.Border;
 
 
 public class Controller implements ActionListener{
@@ -15,6 +21,12 @@ public class Controller implements ActionListener{
     public Application GUI;
     public Trainer player1;
     public Trainer player2;
+    public TextAreaOutputStream taOutputStream;
+    //public Border border;
+    //public JTextArea textArea = new JTextArea();
+    //public TextAreaOutputStream taOutputStream = new TextAreaOutputStream(
+     //       textArea,"");
+
 
 
     public Controller() throws Exception{
@@ -46,7 +58,6 @@ public class Controller implements ActionListener{
         GUI.getSelectlvl2Button2().addActionListener(this);
         GUI.getSelectlvl3Button2().addActionListener(this);
     }
-
 
 
 
@@ -338,7 +349,19 @@ public class Controller implements ActionListener{
                 GUI.frame.repaint();
                 GUI.gamewindowbuttons();
                 addActionListenergamewindow();
+
                 GUI.gamewindow();
+                GUI.textpanel.add(GUI.scrollPane);
+                //GUI.frame.pack();
+                GUI.frame.setLocationRelativeTo(null);
+                //textpanel.add(textArea);
+                //scrollPane.setV
+                //textArea.add(new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                //       JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
+                //frame.add(textpanel);
+                taOutputStream= new TextAreaOutputStream(GUI.textArea,"");
+                System.setOut(new PrintStream(taOutputStream));
+
                 GUI.numberofpotion1.setText("Number of potion :" + player1.numberofpotion );
                 GUI.trainerlabel1.setText("Name :" + player1.trainername);
                 GUI.currentpokemonname1.setText("Currently pokemon :" + (player1.pokemons[player1.currentlypokemon].name ));

@@ -4,24 +4,27 @@ import model.Trainer;
 
 import java.awt.*;
 
+import model.Trainer;
+import controller.Controller;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.PrintStream;
 
 public class Main{
+
     public static void main(String[] args)
     {
-        /*
-        Pokemon a = new Pokemon("baybe",3,"Fire");
-        Pokemon b = new Pokemon("baybev2",3,"Grass");
-        Pokemon c = new Pokemon("test",3,"Grass");
-        Trainer first = new Trainer("dupav1", new Pokemon[] {a,c});
-        Trainer secound = new Trainer("dupav2",new Pokemon[] {b}) ;
-        first.attack_other_trainer(secound);
-        first.changepokemon(1);
-         */
+
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
 
                 try{
+
                     Controller cont = new Controller();
                 }
                 catch(Exception e){
@@ -33,4 +36,6 @@ public class Main{
 
 
     }
+
+
 }
