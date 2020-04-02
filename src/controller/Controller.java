@@ -4,11 +4,6 @@ import model.Pokemon;
 import model.Trainer;
 import view.Application;
 import view.TextAreaOutputStream;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.PrintStream;
@@ -34,9 +29,9 @@ public class Controller implements ActionListener{
     private void addActionListenerstartwindow(){
 
         GUI.getPlayButton().addActionListener(this);
-        GUI.getAboutButton().addActionListener(this);
     }
     private void addActionListenercreatewindow(){
+
         GUI.getReadyButton().addActionListener(this);
     }
     private void addActionListenergamewindow(){
@@ -87,105 +82,98 @@ public class Controller implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if((((JButton) e.getSource() == GUI.getPlayButton()))){
+        if((( e.getSource() == GUI.getPlayButton()))){
             try{
                 PlayButton();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getAboutButton()))){
-            try{
-                AboutButton();
-            } catch (Exception ex){
-                System.out.println(ex);
-            }
-        }
-        if((((JButton) e.getSource() == GUI.getReadyButton()))){
+        if((( e.getSource() == GUI.getReadyButton()))){
             try{
                 ReadyButton();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getReviveButton1()))){
+        if((( e.getSource() == GUI.getReviveButton1()))){
             try{
                 ReviveButton1();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getPotionButton1()))){
+        if((( e.getSource() == GUI.getPotionButton1()))){
             try{
                 PotionButton1();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getAttackButton1()))){
+        if((( e.getSource() == GUI.getAttackButton1()))){
             try{
                 AttackButton1();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getReviveButton2()))){
+        if((( e.getSource() == GUI.getReviveButton2()))){
             try{
                 ReviveButton2();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getPotionButton2()))){
+        if((( e.getSource() == GUI.getPotionButton2()))){
             try{
                 PotionButton2();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getAttackButton2()))){
+        if((( e.getSource() == GUI.getAttackButton2()))){
             try{
                 AttackButton2();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getSelectlvl1Button1()))){
+        if((( e.getSource() == GUI.getSelectlvl1Button1()))){
             try{
                 Selectlvl1Button1();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getSelectlvl2Button1()))){
+        if((( e.getSource() == GUI.getSelectlvl2Button1()))){
             try{
                 Selectlvl2Button1();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getSelectlvl3Button1()))){
+        if((( e.getSource() == GUI.getSelectlvl3Button1()))){
             try{
                 Selectlvl3Button1();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getSelectlvl1Button2()))){
+        if((( e.getSource() == GUI.getSelectlvl1Button2()))){
             try{
                 Selectlvl1Button2();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getSelectlvl2Button2()))){
+        if(((e.getSource() == GUI.getSelectlvl2Button2()))){
             try{
                 Selectlvl2Button2();
             } catch (Exception ex){
                 System.out.println(ex);
             }
         }
-        if((((JButton) e.getSource() == GUI.getSelectlvl3Button2()))){
+        if((( e.getSource() == GUI.getSelectlvl3Button2()))){
             try{
                 Selectlvl3Button2();
             } catch (Exception ex){
@@ -194,13 +182,10 @@ public class Controller implements ActionListener{
         }
     }
 
-    private void PlayButton() throws Exception{
+    private void PlayButton(){
         view("PlayView");
     }
-    private void AboutButton() throws Exception{
-        view("AboutView");
-    }
-    public void ReadyButton() throws Exception{
+    public void ReadyButton(){
         view("GameView");
     }
     public Trainer player1(){
@@ -253,7 +238,7 @@ public class Controller implements ActionListener{
         }
     }
 
-    private Trainer ReviveButton1() throws Exception {
+    private Trainer ReviveButton1(){
         if (player1.possiblerevive > 0 && player1.pokemons[player1.currentlypokemon].current_health == 0) {
             if (player1.pokemons[player1.currentlypokemon] == player1.pokemons[0]) {
                 player1.revive();
@@ -283,24 +268,45 @@ public class Controller implements ActionListener{
             return player1;
         }
     }
-    private Trainer PotionButton1() throws Exception{
-        if(player1.pokemons[player1.currentlypokemon].current_health == 100) {
-            System.out.println(player1.trainername + " wanted to use the potion on the current pokemon which is in full health");
-            return player1;
-        }
-        else {
+    private Trainer PotionButton1(){
+
+        if(player1.numberofpotion > 0 ) {
+            if (player1.pokemons[player1.currentlypokemon].current_health != 100 && player1.pokemons[player1.currentlypokemon].current_health != 0) {
+                if (player1.pokemons[player1.currentlypokemon] == player1.pokemons[0]) {
+                    player1.potion();
+                    GUI.numberofpotion1.setText("Number of potion :" + player1.numberofpotion);
+                    GUI.pokemonlvl1currenthealth.setText("Current health : " + player1.pokemons[0].current_health);
+                    return player1;
+                }
+                if (player1.pokemons[player1.currentlypokemon] == player1.pokemons[1]) {
+                    player1.potion();
+                    GUI.numberofpotion2.setText("Number of potion :" + player1.numberofpotion);
+                    GUI.pokemonlvl2currenthealth.setText("Current health : " + player1.pokemons[1].current_health);
+                    return player1;
+                }
+                if (player1.pokemons[player1.currentlypokemon] == player1.pokemons[2]) {
+                    player1.potion();
+                    GUI.numberofpotion1.setText("Number of potion :" + player1.numberofpotion);
+                    GUI.pokemonlvl3currenthealth.setText("Current health : " + player1.pokemons[2].current_health);
+                    return player1;
+                }
+            }
             if(player1.pokemons[player1.currentlypokemon].current_health == 0) {
                 System.out.println(player1.trainername + " wanted to use the potion on the current pokemon which is knocked down");
                 return player1;
             }
             else{
-                player1.potion();
-                GUI.numberofpotion1.setText("Number of potion :" + player1.numberofpotion );
+                System.out.println(player1.trainername + " wanted to use the potion on the current pokemon which is in full health");
                 return player1;
             }
         }
+        else{
+            System.out.println(player1.trainername + " has already exhausted his potion limit");
+            return player1;
+        }
     }
-    public Trainer AttackButton1() throws Exception{
+
+    public Trainer AttackButton1(){
         if(player1.pokemons[player1.currentlypokemon].current_health != 0) {
             if(player1.pokemons[player1.currentlypokemon] == player1.pokemons[0]) {
                 player1.attack_other_trainer(player2);
@@ -374,7 +380,7 @@ public class Controller implements ActionListener{
             return player2;
         }
     }
-    private Trainer ReviveButton2() throws Exception{
+    private Trainer ReviveButton2(){
         if(player2.possiblerevive > 0 && player2.pokemons[player2.currentlypokemon].current_health == 0)
         {
             if(player2.pokemons[player2.currentlypokemon] == player2.pokemons[0]) {
@@ -407,25 +413,45 @@ public class Controller implements ActionListener{
         }
 
     }
-    private Trainer PotionButton2() throws Exception{
-        if(player2.pokemons[player2.currentlypokemon].current_health == 100) {
-            System.out.println(player2.trainername + " wanted to use the potion on the current pokemon which is in full health");
-            return player2;
-        }
-        else {
-            if(player2.pokemons[player2.currentlypokemon].current_health == 0) {
+    private Trainer PotionButton2(){
+        if(player2.numberofpotion >0) {
+            if (player2.pokemons[player2.currentlypokemon].current_health != 100 && player2.pokemons[player2.currentlypokemon].current_health != 0) {
+                if (player2.pokemons[player2.currentlypokemon] == player2.pokemons[0]) {
+                    player2.potion();
+                    GUI.numberofpotion2.setText("Number of potion :" + player2.numberofpotion);
+                    GUI.pokemonlvl1currenthealthv2.setText("Current health : " + player2.pokemons[0].current_health);
+                    return player2;
+                }
+                if (player2.pokemons[player2.currentlypokemon] == player2.pokemons[1]) {
+                    player2.potion();
+                    GUI.numberofpotion2.setText("Number of potion :" + player2.numberofpotion);
+                    GUI.pokemonlvl2currenthealthv2.setText("Current health : " + player2.pokemons[1].current_health);
+                    return player2;
+                }
+                if (player2.pokemons[player2.currentlypokemon] == player2.pokemons[2]) {
+                    player2.potion();
+                    GUI.numberofpotion2.setText("Number of potion :" + player2.numberofpotion);
+                    GUI.pokemonlvl3currenthealthv2.setText("Current health : " + player2.pokemons[2].current_health);
+                    return player2;
+                }
+
+            }
+            if (player2.pokemons[player2.currentlypokemon].current_health == 0) {
                 System.out.println(player2.trainername + " wanted to use the potion on the current pokemon which is knocked down");
                 return player2;
-            }
-            else{
-                player2.potion();
-                GUI.numberofpotion2.setText("Number of potion :" + player2.numberofpotion );
+            } else {
+                System.out.println(player2.trainername + " wanted to use the potion on the current pokemon which is in full health");
                 return player2;
             }
+        }
+        else{
+            System.out.println(player2.trainername + " has already exhausted his potion limit");
+            return player2;
         }
     }
 
-    private Trainer AttackButton2() throws Exception{
+
+    private Trainer AttackButton2(){
         if(player2.pokemons[player2.currentlypokemon].current_health != 0) {
             if(player2.pokemons[player2.currentlypokemon] == player2.pokemons[0]) {
                 player2.attack_other_trainer(player1);
@@ -477,20 +503,16 @@ public class Controller implements ActionListener{
                 addActionListenercreatewindow();
                 GUI.createwindow();
                 break;
-            case "AboutView":
-                break;
             case "GameView":
                 player1();
                 player2();
-                System.out.println(player1().numberofpotion);
                 GUI.frame.getContentPane().removeAll();
                 GUI.frame.repaint();
+
                 GUI.gamewindowbuttons();
                 addActionListenergamewindow();
-
                 GUI.gamewindow();
                 GUI.textpanel.add(GUI.scrollPane);
-                GUI.frame.setLocationRelativeTo(null);
                 taOutputStream= new TextAreaOutputStream(GUI.textArea,"");
                 System.setOut(new PrintStream(taOutputStream));
 
@@ -529,21 +551,6 @@ public class Controller implements ActionListener{
                 GUI.pokemonlvl3currenthealthv2.setText("Current health : " + player2.pokemons[2].current_health);
 
                 roundplayer1();
-                /*
-                GUI.Selectlvl1Button1.setEnabled(true);
-                GUI.Selectlvl2Button1.setEnabled(true);
-                GUI.Selectlvl3Button1.setEnabled(true);
-                GUI.ReviveButton1.setEnabled(true);
-                GUI.PotionButton1.setEnabled(true);
-                GUI.AttackButton1.setEnabled(true);
-                GUI.Selectlvl1Button2.setEnabled(false);
-                GUI.Selectlvl2Button2.setEnabled(false);
-                GUI.Selectlvl3Button2.setEnabled(false);
-                GUI.ReviveButton2.setEnabled(false);
-                GUI.PotionButton2.setEnabled(false);
-                GUI.AttackButton2.setEnabled(false);
-
-                 */
                 break;
 
         }

@@ -1,7 +1,6 @@
 package view;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 
@@ -10,7 +9,8 @@ public class Application {
     public JTextArea textArea;
     public JScrollPane scrollPane;
     public JPanel textpanel;
-    public Border border;
+    public JPanel pokemonbackground;
+    public JPanel pokemonbackground2;
     public JButton AboutButton;
     public JButton PlayButton;
     public JButton ReadyButton;
@@ -92,7 +92,7 @@ public class Application {
         Image icon = Toolkit.getDefaultToolkit().createImage("pictures\\icon.jfif");
         this.frame.setResizable(false);
         this.frame.setIconImage(icon);
-        this.frame.setTitle("Pokemon");
+        this.frame.setTitle("Pokemons");
         startwindowbuttons();
         startwindow();
     }
@@ -104,12 +104,7 @@ public class Application {
             PlayButton.setBounds(300,200,100,32);
             frame.getContentPane().add(PlayButton);
         }
-        AboutButton = new JButton("About");
-        {
-            AboutButton.setForeground(Color.black);
-            AboutButton.setBounds(300,250,100,32);
-            frame.getContentPane().add(AboutButton);
-        }
+
     }
     public void createwindowbuttons(){
         ReadyButton = new JButton("Ready");
@@ -504,6 +499,7 @@ public class Application {
             pokemontypelabellvl1.setBounds(60,200,80,20);
             frame.getContentPane().add(pokemontypelabellvl1);
         }
+
         pokemonlvl1currenthealth = new JLabel();
         {
             pokemonlvl1currenthealth.setForeground(Color.black);
@@ -654,7 +650,7 @@ public class Application {
 
         textArea = new JTextArea(11,30);
         {
-            textArea.setBounds(175,20,320,200);
+            textArea.setBounds(100,20,320,200);
             textArea.setEditable(false);
             textArea.setBackground(Color.LIGHT_GRAY);
             textArea.setForeground(Color.BLACK);
@@ -665,12 +661,27 @@ public class Application {
             scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             frame.getContentPane().add(scrollPane);
         }
+        pokemonbackground = new JPanel();
+        {
+            pokemonbackground.setBounds(18,10,154,400);
+            pokemonbackground.setBackground(new Color(204, 204, 204));
+            pokemonbackground.setBorder(BorderFactory.createRaisedBevelBorder());
+            frame.getContentPane().add(pokemonbackground);
+        }
+        pokemonbackground2 = new JPanel();
+        {
+            pokemonbackground2.setBounds(498,10,154,400);
+            pokemonbackground2.setBackground(new Color(204, 204, 204));
+            pokemonbackground2.setBorder(BorderFactory.createRaisedBevelBorder());
+            frame.getContentPane().add(pokemonbackground2);
+        }
         background = new JLabel();
         {
             background.setIcon(new ImageIcon("pictures\\GameWindow.jpg"));
             background.setBounds(0,0,700,500);
             frame.getContentPane().add(background);
         }
+
 
 
 

@@ -6,7 +6,6 @@ public class Trainer {
     public int numberofpotion;
     public Pokemon[] pokemons;
     public int currentlypokemon;
-    public int changepokemon;
     public int possiblerevive;
 
     public Trainer(String trainername, Pokemon[] pokemons) {
