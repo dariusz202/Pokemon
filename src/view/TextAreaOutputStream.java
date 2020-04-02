@@ -1,3 +1,4 @@
+// made by Wąsik Dariusz(github.com/dariusz202)
 package view;
 import java.io.IOException;
 import java.io.OutputStream;

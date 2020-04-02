@@ -1,3 +1,4 @@
+// made by Wąsik Dariusz(github.com/dariusz202)
 package view;
 import javax.swing.text.PlainDocument;
 import javax.swing.text.AttributeSet;

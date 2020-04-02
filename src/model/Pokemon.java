@@ -1,3 +1,4 @@
+// made by Wąsik Dariusz(github.com/dariusz202)
 package model;
 import java.util.concurrent.ThreadLocalRandom;
 
