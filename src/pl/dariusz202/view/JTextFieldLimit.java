@@ -1,5 +1,5 @@
 // made by Wąsik Dariusz(github.com/dariusz202)
-package view;
+package pl.dariusz202.view;
 import javax.swing.text.PlainDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;

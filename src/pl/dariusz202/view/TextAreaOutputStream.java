@@ -1,5 +1,5 @@
 // made by Wąsik Dariusz(github.com/dariusz202)
-package view;
+package pl.dariusz202.view;
 import java.io.IOException;
 import java.io.OutputStream;
 
