@@ -1,5 +1,5 @@
 // made by Wąsik Dariusz(github.com/dariusz202)
-package model;
+package pl.dariusz202.model;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Pokemon{
